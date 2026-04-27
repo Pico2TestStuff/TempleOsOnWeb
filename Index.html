@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>ISO VM</title>
+<style>
+body { margin:0; background:black; }
+#screen { width:100vw; height:100vh; }
+</style>
+</head>
+<body>
+
+<div id="screen"></div>
+
+<script src="https://copy.sh/v86/build/libv86.js"></script>
+
+<script>
+new V86({
+  wasm_path: "https://copy.sh/v86/build/v86.wasm",
+
+  memory_size: 256 * 1024 * 1024,
+
+  screen_container: document.getElementById("screen"),
+
+  bios: {
+    url: "https://copy.sh/v86/bios/seabios.bin"
+  },
+
+  vga_bios: {
+    url: "https://copy.sh/v86/bios/vgabios.bin"
+  },
+
+  // 👇 YOUR ISO GOES HERE
+  cdrom: {
+    url: "TempleOs.ISO"
+  },
+
+  autostart: true
+});
+</script>
+
+</body>
+</html>
